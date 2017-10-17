@@ -1,0 +1,24 @@
+<section class="py-5 mt-5 animated fadeIn">
+  <div class="container">
+	  <h1 class="my-4">Projetos</h1>
+	  <pesquisaprojeto></pesquisaprojeto>
+		<pager></pager>
+		<div class="row mb-2">
+			<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item mt-3" 
+				ng-repeat="projeto in vm.items | limitTo:pageSize">
+				<div class="card h-100">
+					<a ng-href="#!/projetos/{{ projeto._id }}">
+						<img class="card-img-top" src="http://placehold.it/500x300" alt="{{projeto.name}}">
+					</a>
+					<div class="card-body">
+						<h4 class="card-title">
+							<a ng-href="#!/projetos/{{projeto._id}}">{{projeto.name}}</a>
+						</h4>
+						<p class="card-text">{{projeto.description}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<pager></pager>
+	</div>
+</section>

@@ -1,0 +1,300 @@
+<section class="py-5 mt-5 animated fadeIn">
+    <div class="container">
+        <div class="form-box">
+            <div class="form-top">
+                <div class="form-top-left">
+                    <h3>Cadastre-se agora!</h3>
+                </div>
+            </div>
+            <div class="form-bottom">
+                <form name="myForm" ng-submit="signup()" role="form">
+                    <!--checkbox-->
+                    <div class="form-group mt-3">
+                        <div class="checkbox">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" ng-model="representa">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Eu represento um Projeto!</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div ng-show="representa" class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Importante!</strong>
+                        <p>
+                            Para inscrição de projetos na mostra é necessário submeter 
+                            alguns documentos. (Ver 'Dados de Projeto' abaixo)
+                        </p>
+                    </div>
+
+                    <ul class="nav nav-tabs" id="dadosDeCadastroNavTab" role="tablist">
+                        <li class="nav-item">
+                            <a  id="tabUsuario" 
+                                class="nav-link active"
+                                ng-click="handleTabs($event.currentTarget)"
+                                data-toggle="tab" 
+                                role="tab" 
+                                aria-controls="dadosUsuario">
+                                    Dados do Usuário
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a  id="tabProjeto" 
+                                class="nav-link" 
+                                ng-show="representa"
+                                ng-click="representa && handleTabs($event.currentTarget)"
+                                data-toggle="tab" 
+                                role="tab" 
+                                aria-controls="dadosProjeto">
+                                    Dados do Projeto
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="mt-3">
+                        <div class="tab-pane tab-content" id="dadosUsuario" role="tabpanel" ng-hide="tabProjetoSelected && representa">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-username">Usuário</label>
+                                <input type="text" name="username" placeholder="Nome de Usuário" class="form-control" ng-model="username" required>
+                                <div class="help-block" ng-show="form.username.$dirty && form.username.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Nome de Usuário é necessário</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-first-name">Nome</label>
+                                <input type="text" name="firstName" placeholder="Nome" class="form-control" ng-model="firstName" required>
+                                <div class="help-block" ng-show="form.firstName.$dirty && form.firstName.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Nome é necessário</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-email">Email</label>
+                                <input type="email" name="email" placeholder="Email" class="form-control" ng-model="email" required>
+                                <div class="help-block" ng-show="form.email.$dirty && form.email.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Email é necessário</div>
+                                </div>
+                            </div>
+                            <!--senha-->
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Senha</label>
+                                <input type="password" name="password" placeholder="Senha" class="form-control" ng-model="password" required>
+                                <div class="help-block" ng-show="form.password.$dirty && form.password.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Senha é necessária</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-repeat-password">Senha</label>
+                                <input type="password" name="password2" placeholder="Repita a Senha" class="form-control" ng-model="password2" required>
+                                <div class="help-block" ng-show="form.password2.$dirty && form.password2.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Senha é necessária</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="tabProjetoSelected && representa" class="tab-pane tab-content" id="dadosProjeto" role="tabpanel">
+                            <!--inputs para projeto-->
+                            <div class="form-group">
+                                <label class="sr-only" for="form-razao">Nome do Projeto</label>
+                                <input type="text" name="rsocial" placeholder="Nome do Projeto" class="form-control" ng-model="nomeprojeto" ng-required="representa">
+                                <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Nome do Projeto é necessário</div>
+                                </div>
+                            </div>
+                            <!--eixos-->
+                        <div style="color:#fff; background-color:#FF802B; border-radius: 5px">
+                                <div class="form-group mt-3">
+                                    <div class="btn-group" data-toggle="buttons">
+                                            <h3>Número de Autores:</h3>
+                                        <input type="radio" value="um" ng-model="autores">1
+                                        <input type="radio" value="dois" ng-model="autores">2
+                                        <input type="radio" value="tres" ng-model="autores">3
+                                    </div>
+                                </div>
+                            <!--radiobtns autores-->
+                            <!--AUTOR1-->
+                            <div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-autor1">Nome do Autor(1)</label>
+                                    <input type="text" name="nomeautor1" placeholder="Nome do Autor(1)" class="form-control" ng-model="nomeautor1" ng-required="representa">
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-CPF">CPF do Autor(1)</label>
+                                    <input 
+                                        id="CPF" 
+                                        type="text" 
+                                        name="CPF1" 
+                                        placeholder="CPF do Autor(1)" 
+                                        class="form-control" 
+                                        ng-model="CPF" 
+                                        ng-required="representa"
+                                        mask="999.999.999-99"
+                                        onpaste="return false;"
+                                        />
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--AUTOR2-->
+                            <div ng-show="autores == 'dois' || autores == 'tres'">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-autor1">Nome do Autor(2)</label>
+                                    <input type="text" name="nomeautor2" placeholder="Nome do Autor(2)" class="form-control" ng-model="nomeautor2" ng-required="representa">
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-CPF">CPF do Autor(2)</label>
+                                    <input 
+                                        id="CPF" 
+                                        type="text" 
+                                        name="CPF2" 
+                                        placeholder="CPF do Autor(2)" 
+                                        class="form-control" 
+                                        ng-model="CPF2" 
+                                        ng-required="representa"
+                                        mask="999.999.999-99"
+                                        onpaste="return false;"
+                                        />
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--AUTOR3-->
+                            <div ng-show="autores == 'tres'">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-autor1">Nome do Autor(3)</label>
+                                    <input type="text" name="nomeautor3" placeholder="Nome do Autor(3)" class="form-control" ng-model="nomeautor3" ng-required="representa">
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-CPF">CPF do Autor(3)</label>
+                                    <input 
+                                        id="CPF" 
+                                        type="text" 
+                                        name="CPF3" 
+                                        placeholder="CPF do Autor(3)" 
+                                        class="form-control" 
+                                        ng-model="CPF3" 
+                                        ng-required="representa"
+                                        mask="999.999.999-99"
+                                        onpaste="return false;"
+                                        />
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                            <div class="form-group">
+                                <label class="sr-only" for="form-estDate">Data de Criação</label>
+                                <input 
+                                    id="estDate" 
+                                    type="text" 
+                                    name="estDate" 
+                                    placeholder="Data de Criação" 
+                                    class="form-control" 
+                                    ng-model="estDate" 
+                                    ng-required="representa"
+                                    mask="99/99/9999"
+                                    onpaste="return false;"
+                                />
+                                <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Data de Criação é necessária</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-phone">Data de Criação</label>
+                                <input 
+                                    id="phone" 
+                                    type="text" 
+                                    name="phone" 
+                                    placeholder="Celular para contato" 
+                                    class="form-control" 
+                                    ng-model="phone" 
+                                    ng-required="representa"
+                                    mask="(99) 999999999"
+                                    onpaste="return false;"
+                                />
+                                <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Telefone é necessário</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-postal_address">Escola Origem</label>
+                                <input 
+                                    id="postal_address" 
+                                    type="text" 
+                                    name="postal_address" 
+                                    placeholder="Escola Origem" 
+                                    class="form-control" 
+                                    ng-model="postal_address" 
+                                    ng-required="representa"
+                                />
+                                <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Escola Origem é necessário</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-postal_address">Endereço</label>
+                                <input 
+                                    id="postal_address" 
+                                    type="text" 
+                                    name="postal_address" 
+                                    placeholder="Endereço (Rua / Avenida)" 
+                                    class="form-control" 
+                                    ng-model="postal_address" 
+                                    ng-required="representa"
+                                />
+                                <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Endereço é necessário</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-estado">Estado</label>
+                                <select 
+                                    name="estado"
+                                    ng-model="selectedState" 
+                                    ng-options="estado.nome for estado in estados"
+                                    class="form-control" >
+                                    <option value="" disabled selected>Estado</option>
+                                </select>
+                                <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Estado é necessário</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-cidade">Cidade</label>
+                                <select 
+                                    name="cidade"
+                                    ng-model="selectedCity" 
+                                    ng-options="cidade for cidade in cidades"
+                                    class="form-control" >
+                                    <option value="" disabled selected>Cidade</option>
+                                </select>
+                                <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Cidade é necessário</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" ng-disabled="myForm.$invalid || dataLoading" class="btn btn-primary">Cadastre-me!</button>
+                        <img ng-if="dataLoading" src="../images/loading.gif" />
+                        <a href="#!">Cancelar</a>
+                    </div>
+                    <div ng-show="error" class="alert alert-danger">{{error}}</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

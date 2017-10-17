@@ -1,0 +1,31 @@
+<section class="py-5 mt-5 animated fadeIn">
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Login</h2>
+            <form name="myForm" ng-submit="login()" role="form">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <i class="fa fa-key"></i>
+                    <input type="text" name="username" class="form-control" ng-model="username" required />
+                    <div class="help-block" ng-show="form.username.$dirty && form.username.$error.required">
+                        <div ng-message="required">Usuário é necessário</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <i class="fa fa-lock"></i>
+                    <input type="password" name="password" class="form-control" ng-model="password" required />
+                    <div class="help-block" ng-show="form.password.$dirty && form.password.$error.required">
+                        <div ng-message="required">Senha é necessária</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" ng-disabled="myForm.$invalid || dataLoading" class="btn btn-primary">Login</button>
+                    <img ng-if="dataLoading" src="../images/loading.gif" />
+                    <a href="#!signup">Cadastre-se agora!</a>
+                </div>
+                <div ng-show="error" class="alert alert-danger">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</section>

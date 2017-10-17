@@ -1,0 +1,50 @@
+<div ng-controller="HomeController">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#" ng-click="page.setPage(1)"><img class="logo" src="./images/logo.png" alt="Mep"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" ng-class="{ active:page.isSet(1) }">
+            <a class="nav-link" href="#" ng-click="page.setPage(1)">Home</a>
+          </li>
+          <li class="nav-item" ng-class="{ active:page.isSet(2) }">
+            <a class="nav-link" href="#!projetos" ng-click="page.setPage(2)">Projetos</a>
+          </li>
+          <li class="nav-item" ng-class="{ active:page.isSet(3) }">
+              <a class="nav-link" href="#!sobre" ng-click="page.setPage(3)">Sobre</a>
+          </li>
+          <li ng-show="userLoggedIn" class="nav-item" ng-class="{ active:page.isSet(4) }">
+              <a class="nav-link" href="#!relatorios" ng-click="page.setPage(4)">Relatorios</a>
+          </li>
+          <li ng-show="userLoggedIn" class="nav-item" ng-class="{ active:page.isSet(5) }">
+              <a class="nav-link" href="#!avaliacao" ng-click="page.setPage(5)">Avaliações</a>
+          </li>
+          <li ng-hide="userLoggedIn" class="nav-item" ng-class="{ active:page.isSet(6) }">
+            <a class="nav-link" href="#!participe" ng-click="page.setPage(6)">Participe!</a>
+          </li>    
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="text-white" ng-hide="userLoggedIn">
+        <a ng-click="page.setPage(0)" class="text-white" href="#!signup" style="text-decoration: none;">Cadastre-se</a>
+        &nbsp|&nbsp
+        <a ng-click="page.setPage(0)" class="text-white" href="#!login" style="text-decoration: none;">Log In</a>
+      </div>
+
+      <div class="text-white" ng-show="userLoggedIn">
+        <a class="text-white" style="text-decoration: none;">
+          <img src="https://s0.wp.com/wp-content/themes/vip/cox-rare-platform/assets/img/account.png" class="rounded-circle">
+          <b>{{ userLoggedIn }}</b> 
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
+        </a>
+        &nbsp|&nbsp
+        <a class="text-white" href="#!logout" style="text-decoration: none;">Log Out</a>
+      </div>
+      
+    </div>
+  </nav>
+</div>

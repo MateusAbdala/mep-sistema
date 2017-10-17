@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="mep">
+  <head>
+    <title>.:MEP 2017:. 2.0</title>
+    <meta charset="utf-8">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Mateus Abdala">
+    <meta name="description" content="">
+  
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/css-custom/homestyle.css" rel="stylesheet">
+    <link href="lib/css-custom/forms.css" rel="stylesheet">
+    <link href="lib/css-custom/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css"> 
+
+  </head>
+  <body>
+    <barranavegacao></barranavegacao>
+    <div ng-view></div>
+    <rodape></rodape>
+  </body>
+  <script type="text/javascript" src="lib/angularjs/angular.js"></script>
+  <script src="lib/angularjs/angular-route.js"></script>
+  <script type="text/javascript" src="lib/lodash/lodash.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="routes/index.js"></script>
+  <script type="text/javascript" src="directives/index.js"></script>
+
+  <script type="text/javascript" src="components/pager/index.js"></script>
+  <script type="text/javascript" src="controllers/loginController.js"></script>
+  <script type="text/javascript" src="controllers/signupController.js"></script>
+  <script type="text/javascript" src="controllers/logoutController.js"></script>
+  <script type="text/javascript" src="controllers/homeController.js"></script>
+  <script type="text/javascript" src="controllers/projetosController.js"></script>
+  <script type="text/javascript" src="integration/authenticationClient.js"></script>
+  <script type="text/javascript" src="integration/signupClient.js"></script>
+  <script type="text/javascript" src="integration/projetosClient.js"></script>
+
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngMask/3.1.1/ngMask.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</html>
