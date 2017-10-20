@@ -29,7 +29,17 @@ angular.module('mep')
 .directive('pesquisaprojeto', function(){
   return {
     restrict: 'E',
-    templateUrl: './fragments/pesquisaprojeto.html'
+    templateUrl: './fragments/pesquisaprojeto.html',
+    controller: function() {
+      this.visivel = false;
+
+      this.change = function() {
+        if(visivel === false)
+        return this.visivel === true;
+      };
+
+    },
+    controllerAs: "visivel"
   };
 })
 

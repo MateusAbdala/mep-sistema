@@ -4,10 +4,10 @@ angular.module('Projeto')
     ['$http', '$rootScope', '$timeout', '$window',
     function ($http, $rootScope, $timeout, $window) {
         
-        var urlBase = 'http://52.15.61.162/project-service/project';
+        var urlBase = 'http://localhost:8082';
         var service = {};
 
-        service.GetAllEntities = function () {
+        service.GetAllProjects = function () {
         	return $http.get(urlBase);
     		};
 

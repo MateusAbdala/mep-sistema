@@ -33,7 +33,7 @@ function($scope, ProjetoClient, $routeParams, PagerService, $http) {
             console.log('Unable to load project details: ' + error.message);
         });
     } else {
-        ProjetoClient.GetAllEntities().then(function (response) {
+        ProjetoClient.GetAllProjects().then(function (response) {
             vm.projetos = response.data;
             vm.items = vm.projetos;
             vm.pager = PagerService.GetPager(vm.projetos.length, 1, visiblePages, $scope.pageSize);
