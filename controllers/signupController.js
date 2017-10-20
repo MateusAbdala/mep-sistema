@@ -9,8 +9,7 @@ angular.module('Authentication')
 			$scope.eixos = null;			
 			$http({
 				method: 'GET',
-				url: '../lib/estados-cidades.json',
-				url: '../lib/eixos-tecnologicos.json'
+				url: '../lib/estados-cidades.json'
 			}).then(function successCallback(response) {
                 $scope.estados = response.data.estados;
             }, function errorCallback(response) {
