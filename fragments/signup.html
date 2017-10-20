@@ -96,12 +96,24 @@
                             <!--inputs para projeto-->
                             <div class="form-group">
                                 <label class="sr-only" for="form-razao">Nome do Projeto</label>
-                                <input type="text" name="rsocial" placeholder="Nome do Projeto" class="form-control" ng-model="nomeprojeto" ng-required="representa">
-                                <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                <input type="text" name="nomeprojeto" placeholder="Nome do Projeto" class="form-control" ng-model="nomeprojeto" ng-required="representa">
+                                <div class="help-block" ng-show="form.nomeprojeto.$dirty && form.nomeprojeto.$error.required">
                                     <div class="alert alert-danger mt-1" ng-message="required">Nome do Projeto é necessário</div>
                                 </div>
                             </div>
-                            <!--eixos-->
+                            <div class="form-group">
+                                <label class="sr-only" for="form-eixo">Eixo Tecnológico</label>
+                                <select 
+                                    name="eixo"
+                                    ng-model="selectedEixo" 
+                                    ng-options="x.eixo for x in eixos"
+                                    class="form-control" >
+                                    <option value="" disabled selected>Eixo Tecnológico</option>
+                                </select>
+                                <div class="help-block" ng-show="form.eixo.$dirty && form.eixo.$error.required">
+                                    <div class="alert alert-danger mt-1" ng-message="required">Eixo Tecnológico é necessário</div>
+                                </div>
+                            </div>
                         <div style="color:#fff; background-color:#FF802B; border-radius: 5px">
                                 <div class="form-group mt-3">
                                     <div class="btn-group" data-toggle="buttons">

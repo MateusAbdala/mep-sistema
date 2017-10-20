@@ -4,10 +4,12 @@ angular.module('Projeto', [])
 function($scope, ProjetoClient, $routeParams, PagerService, $http) {
 
     $scope.estados = null;
-    $scope.cidades = null;			
+    $scope.cidades = null;	
+    $scope.eixos = null;		
     $http({
         method: 'GET',
-        url: '../lib/estados-cidades.json'
+        url: '../lib/estados-cidades.json',
+        url: '../lib/eixos-tecnologicos.json'
     }).then(function successCallback(response) {
         $scope.estados = response.data.estados;
     }, function errorCallback(response) {
@@ -19,6 +21,12 @@ function($scope, ProjetoClient, $routeParams, PagerService, $http) {
             $scope.cidades = $scope.selectedState.cidades;
         }
     });
+
+    $scope.$watch('selectedEixo', function(newVal, oldVal){
+        if($scope.selectedEixo){
+            $scope.eixos = $scope.selectedEixo.eixos;
+        }
+    });    
 
     var vm = this;
     vm.pager = {};

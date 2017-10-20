@@ -27,6 +27,11 @@ input.ng-dirty.ng-valid {
         margin: 0 auto;
     }
 
+    #dropsearch{
+        width: 700px;
+        margin: 0 auto;
+    }
+
     .dropdown.dropdown-lg {
         position: static !important;
     }
