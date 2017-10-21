@@ -11,7 +11,7 @@ angular.module('Authentication')
                     'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
                 },
                 method: 'POST',
-                url: 'http://localhost:8081/authenticate',
+                url: 'http://localhost:8080/authenticate',
                 data: { 
                     name: username, 
                     password: password 

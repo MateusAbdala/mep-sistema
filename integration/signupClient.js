@@ -9,7 +9,7 @@ angular.module('Authentication')
             $http({
             	headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
 						  method: 'POST',
-						  url: 'http://localhost:8081/signup',
+						  url: 'http://localhost:8080/signup',
 						  data: { 
 						  	name: username, 
 						  	password: password 

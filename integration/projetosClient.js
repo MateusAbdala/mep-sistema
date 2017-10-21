@@ -4,7 +4,7 @@ angular.module('Projeto')
     ['$http', '$rootScope', '$timeout', '$window',
     function ($http, $rootScope, $timeout, $window) {
         
-        var urlBase = 'http://localhost:8082';
+        var urlBase = 'http://localhost:8080/api/project';
         var service = {};
 
         service.GetAllProjects = function () {
