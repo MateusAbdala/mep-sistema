@@ -1,17 +1,17 @@
 {
     "eixos": [
-        "Ambiente e Saúde",
-        "Controle e Processos Industriais",
-        "Desenvolvimento Educacional e Social",
-        "Gestão e Negócios",
-        "Informação e Comunicação",
-        "Infraestrutura",
-        "Militar",
-        "Produção Alimentícia",
-        "Produção Cultural e Design",
-        "Produção Industrial",
-        "Recursos Naturais",
-        "Segurança",
-        "Turismo Hospitalidade e Lazer"
+        { "nome": "Ambiente e Saúde" },
+        { "nome": "Controle e Processos Industriais"},
+        { "nome": "Desenvolvimento Educacional e Social"},
+        { "nome": "Gestão e Negócios"},
+        { "nome": "Informação e Comunicação"},
+        { "nome": "Infraestrutura"},
+        { "nome": "Militar"},
+        { "nome": "Produção Alimentícia"},
+        { "nome": "Produção Cultural e Design"},
+        { "nome": "Produção Industrial"},
+        { "nome": "Recursos Naturais"},
+        { "nome": "Segurança"},
+        { "nome": "Turismo Hospitalidade e Lazer"}
     ]
 }

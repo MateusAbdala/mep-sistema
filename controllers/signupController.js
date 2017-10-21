@@ -15,6 +15,15 @@ angular.module('Authentication')
             }, function errorCallback(response) {
 				console.log('Could not load estados from JSON file');
 			});
+
+			$http({
+                method: 'GET',
+                url: '../lib/eixos-tecnologicos.json'
+            }).then(function successCallback(response) {
+                $scope.eixos = response.data.eixos;
+            }, function errorCallback(response) {
+                console.log('Could not load eixos from JSON file');
+            });
 			
 			$scope.$watch('selectedState', function(newVal, oldVal){
 				if($scope.selectedState){
