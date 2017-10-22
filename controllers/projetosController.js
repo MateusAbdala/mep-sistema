@@ -14,18 +14,21 @@ function($scope, ProjetoClient, $routeParams, PagerService, $http) {
     }, function errorCallback(response) {
         console.log('Could not load estados from JSON file');
     });
+
+    $http({
+        method: 'GET',
+        url: '../lib/eixos-tecnologicos.json'
+    }).then(function successCallback(response) {
+        $scope.eixos = response.data.eixos;
+    }, function errorCallback(response) {
+        console.log('Could not load eixos from JSON file');
+    });
     
     $scope.$watch('selectedState', function(newVal, oldVal){
         if($scope.selectedState){
             $scope.cidades = $scope.selectedState.cidades;
         }
     });
-
-    $scope.$watch('selectedEixo', function(newVal, oldVal){
-        if($scope.selectedEixo){
-            $scope.eixos = $scope.selectedEixo.eixos;
-        }
-    });    
 
     var vm = this;
     vm.pager = {};

@@ -31,12 +31,6 @@ angular.module('Authentication')
 				}
 			});
 
-			$scope.$watch('selectedEixo', function(newVal, oldVal){
-				if($scope.selectedEixo){
-					$scope.eixos = $scope.selectedEixo.eixos;
-				}
-			});
-
 			$scope.handleTabs = function (selectedTab) {
 				if(selectedTab.id == 'tabUsuario'){
 					$scope.tabProjetoSelected = false;
