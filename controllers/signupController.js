@@ -4,6 +4,16 @@ angular.module('Authentication')
 		['$rootScope', '$scope', '$timeout', '$location', '$http', 'SignUpClient', 'AuthenticationClient',
 		function ($rootScope, $scope, $timeout, $location, $http, SignUpClient, AuthenticationClient) {
 
+			this.aba = 1;
+			
+			this.isSet = function(checkAba) {
+			  return this.aba == checkAba;
+			};
+			
+			this.setTab = function(setAba) {
+			  this.aba = setAba;
+			};
+
 			$scope.estados = null;
 			$scope.cidades = null;
 			$scope.eixos = null;			
@@ -31,14 +41,6 @@ angular.module('Authentication')
 				}
 			});
 
-			$scope.handleTabs = function (selectedTab) {
-				if(selectedTab.id == 'tabUsuario'){
-					$scope.tabProjetoSelected = false;
-				} else if (selectedTab.id == 'tabProjeto'){
-					$scope.tabProjetoSelected = true;
-				}
-			};
-
 			$scope.signup = function () {
 				$scope.dataLoading = true;
 				SignUpClient.SignUp($scope.username, $scope.password, function(response) {
@@ -58,6 +60,6 @@ angular.module('Authentication')
 						$scope.dataLoading = false;
 					}
 				});
-	    	};
-		}]);
-
+			};
+			
+}]);

@@ -3,7 +3,7 @@
         <div class="form-box">
             <div class="form-top">
                 <div class="form-top-left">
-                    <h3>Cadastre-se agora!</h3>
+                    <h3>Cadastre-se agora!{{aba}}</h3>
                 </div>
             </div>
             <div class="form-bottom">
@@ -33,7 +33,7 @@
                         <li class="nav-item">
                             <a  id="tabUsuario" 
                                 class="nav-link active"
-                                ng-click="handleTabs($event.currentTarget)"
+                                ng-click="aba.setAba(1)"
                                 data-toggle="tab" 
                                 role="tab" 
                                 aria-controls="dadosUsuario">
@@ -44,17 +44,50 @@
                             <a  id="tabProjeto" 
                                 class="nav-link" 
                                 ng-show="representa"
-                                ng-click="representa && handleTabs($event.currentTarget)"
+                                ng-click="aba.setAba(2)"
                                 data-toggle="tab" 
                                 role="tab" 
                                 aria-controls="dadosProjeto">
                                     Dados do Projeto
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a  id="tabAutorUm" 
+                                class="nav-link" 
+                                ng-show="representa"
+                                ng-click="aba.setAba(3)"
+                                data-toggle="tab" 
+                                role="tab" 
+                                aria-controls="dadosAutorUm">
+                                    Dados do Autor(1)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a  id="tabAutorDois" 
+                                class="nav-link" 
+                                ng-show="representa && autores == 'dois' || autores == 'tres'"
+                                ng-click="aba.setAba(4)"
+                                data-toggle="tab" 
+                                role="tab" 
+                                aria-controls="dadosAutorDois">
+                                    Dados do Autor(2)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a  id="tabAutorTres" 
+                                class="nav-link" 
+                                ng-show="representa && autores == 'tres'"
+                                ng-click="aba.setAba(5)"
+                                data-toggle="tab" 
+                                role="tab" 
+                                aria-controls="dadosAutorTres">
+                                    Dados do Autor(3)
+                            </a>
+                        </li>
                     </ul>
 
                     <div class="mt-3">
-                        <div class="tab-pane tab-content" id="dadosUsuario" role="tabpanel" ng-hide="tabProjetoSelected && representa">
+                        <div class="tab-pane tab-content" id="dadosUsuario" role="tabpanel" ng-show="aba.isSet(1)">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Usuário</label>
                                 <input type="text" name="username" placeholder="Nome de Usuário" class="form-control" ng-model="username" required>
@@ -92,7 +125,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div ng-show="tabProjetoSelected && representa" class="tab-pane tab-content" id="dadosProjeto" role="tabpanel">
+                        <div ng-show="aba.isSet(2) && representa" class="tab-pane tab-content" id="dadosProjeto" role="tabpanel">
                             <!--inputs para projeto-->
                             <div class="form-group">
                                 <label class="sr-only" for="form-razao">Nome do Projeto</label>
@@ -124,94 +157,12 @@
                                     </div>
                                 </div>
                             <!--radiobtns autores-->
-                            <!--AUTOR1-->
-                            <div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-autor1">Nome do Autor(1)</label>
-                                    <input type="text" name="nomeautor1" placeholder="Nome do Autor(1)" class="form-control" ng-model="nomeautor1" ng-required="representa">
-                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
-                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-CPF">CPF do Autor(1)</label>
-                                    <input 
-                                        id="CPF" 
-                                        type="text" 
-                                        name="CPF1" 
-                                        placeholder="CPF do Autor(1)" 
-                                        class="form-control" 
-                                        ng-model="CPF" 
-                                        ng-required="representa"
-                                        mask="999.999.999-99"
-                                        onpaste="return false;"
-                                        />
-                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
-                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--AUTOR2-->
-                            <div ng-show="autores == 'dois' || autores == 'tres'">
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-autor1">Nome do Autor(2)</label>
-                                    <input type="text" name="nomeautor2" placeholder="Nome do Autor(2)" class="form-control" ng-model="nomeautor2" ng-required="representa">
-                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
-                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-CPF">CPF do Autor(2)</label>
-                                    <input 
-                                        id="CPF" 
-                                        type="text" 
-                                        name="CPF2" 
-                                        placeholder="CPF do Autor(2)" 
-                                        class="form-control" 
-                                        ng-model="CPF2" 
-                                        ng-required="representa"
-                                        mask="999.999.999-99"
-                                        onpaste="return false;"
-                                        />
-                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
-                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--AUTOR3-->
-                            <div ng-show="autores == 'tres'">
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-autor1">Nome do Autor(3)</label>
-                                    <input type="text" name="nomeautor3" placeholder="Nome do Autor(3)" class="form-control" ng-model="nomeautor3" ng-required="representa">
-                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
-                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-CPF">CPF do Autor(3)</label>
-                                    <input 
-                                        id="CPF" 
-                                        type="text" 
-                                        name="CPF3" 
-                                        placeholder="CPF do Autor(3)" 
-                                        class="form-control" 
-                                        ng-model="CPF3" 
-                                        ng-required="representa"
-                                        mask="999.999.999-99"
-                                        onpaste="return false;"
-                                        />
-                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
-                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            
+                        </div>                                
                             <div class="form-group">
                                 <label class="sr-only" for="form-estDate">Data de Criação</label>
                                 <input 
                                     id="estDate" 
-                                    type="date" 
+                                    type="text" 
                                     name="estDate" 
                                     placeholder="Data de Criação" 
                                     class="form-control" 
@@ -298,7 +249,94 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div ng-show="aba.isSet(3) && representa" class="tab-pane tab-content" id="dadosAutorUm" role="tabpanel">
+                            <div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-autor1">Nome do Autor(1)</label>
+                                    <input type="text" name="nomeautor1" placeholder="Nome do Autor(1)" class="form-control" ng-model="nomeautor1" ng-required="representa">
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-CPF">CPF do Autor(1)</label>
+                                    <input 
+                                        id="CPF" 
+                                        type="text" 
+                                        name="CPF1" 
+                                        placeholder="CPF do Autor(1)" 
+                                        class="form-control" 
+                                        ng-model="CPF" 
+                                        ng-required="representa"
+                                        mask="999.999.999-99"
+                                        onpaste="return false;"
+                                        />
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="aba.isSet(4) && representa" class="tab-pane tab-content" id="dadosAutorDois" role="tabpanel">
+                            <div ng-show="autores == 'dois' || autores == 'tres'">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-autor1">Nome do Autor(2)</label>
+                                    <input type="text" name="nomeautor2" placeholder="Nome do Autor(2)" class="form-control" ng-model="nomeautor2" ng-required="representa">
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-CPF">CPF do Autor(2)</label>
+                                    <input 
+                                        id="CPF" 
+                                        type="text" 
+                                        name="CPF2" 
+                                        placeholder="CPF do Autor(2)" 
+                                        class="form-control" 
+                                        ng-model="CPF2" 
+                                        ng-required="representa"
+                                        mask="999.999.999-99"
+                                        onpaste="return false;"
+                                        />
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="aba.isSet(5) && representa" class="tab-pane tab-content" id="dadosAutorTres" role="tabpanel">
+                            <div ng-show="autores == 'tres'">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-autor1">Nome do Autor(3)</label>
+                                    <input type="text" name="nomeautor3" placeholder="Nome do Autor(3)" class="form-control" ng-model="nomeautor3" ng-required="representa">
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">Nome do Autor é necessário</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-CPF">CPF do Autor(3)</label>
+                                    <input 
+                                        id="CPF" 
+                                        type="text" 
+                                        name="CPF3" 
+                                        placeholder="CPF do Autor(3)" 
+                                        class="form-control" 
+                                        ng-model="CPF3" 
+                                        ng-required="representa"
+                                        mask="999.999.999-99"
+                                        onpaste="return false;"
+                                        />
+                                    <div class="help-block" ng-show="form.rsocial.$dirty && form.rsocial.$error.required">
+                                        <div class="alert alert-danger mt-1" ng-message="required">CPF é necessário</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <button type="submit" ng-disabled="myForm.$invalid || dataLoading" class="btn btn-primary">Cadastre-me!</button>
                         <img ng-if="dataLoading" src="../images/loading.gif" />

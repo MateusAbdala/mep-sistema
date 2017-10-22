@@ -1,3 +1,7 @@
+::selection{
+    background-color: orange;
+}
+
 .carousel-item {
     height: 65vh;
     min-height: 300px;
