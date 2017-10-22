@@ -3,7 +3,7 @@
         <div class="form-box">
             <div class="form-top">
                 <div class="form-top-left">
-                    <h3>Cadastre-se agora!{{aba}}</h3>
+                    <h3>Cadastre-se agora!</h3>
                 </div>
             </div>
             <div class="form-bottom">
@@ -88,6 +88,14 @@
 
                     <div class="mt-3">
                         <div class="tab-pane tab-content" id="dadosUsuario" role="tabpanel" ng-show="isSet(1)">
+                            <!-- Example file upload - START -->
+                            <div class="form-group">
+                                <label class="sr-only" for="form-username">Imagem</label>
+                                <input type="file" ng-file-select="onFileSelect($files)" ng-model="imageSrc">
+                            </div>
+                            <img style="width:200px; height:200px;" ng-src="{{imageSrc}}" />
+                            <!-- Example file upload - END -->
+
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Usuário</label>
                                 <input type="text" name="username" placeholder="Nome de Usuário" class="form-control" ng-model="username" required>
