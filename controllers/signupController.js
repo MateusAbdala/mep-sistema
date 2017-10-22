@@ -4,14 +4,16 @@ angular.module('Authentication')
 		['$rootScope', '$scope', '$timeout', '$location', '$http', 'SignUpClient', 'AuthenticationClient',
 		function ($rootScope, $scope, $timeout, $location, $http, SignUpClient, AuthenticationClient) {
 
-			this.aba = 1;
+			$scope.aba = 1;
 			
 			this.isSet = function(checkAba) {
-			  return this.aba == checkAba;
+				alert("isSet");
+			  return $scope.aba == checkAba;
 			};
 			
-			this.setTab = function(setAba) {
-			  this.aba = setAba;
+			this.setAba = function(setAba) {
+				alert("setAba");
+				$scope.aba = setAba;
 			};
 
 			$scope.estados = null;
