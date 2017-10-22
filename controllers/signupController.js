@@ -6,12 +6,11 @@ angular.module('Authentication')
 
 			$scope.aba = 1;
 			
-			this.isSet = function(checkAba) {
-				alert("isSet");
+			$scope.isSet = function(checkAba) {
 			  return $scope.aba == checkAba;
 			};
 			
-			this.setAba = function(setAba) {
+			$scope.setAba = function(setAba) {
 				alert("setAba");
 				$scope.aba = setAba;
 			};
