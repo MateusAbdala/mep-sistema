@@ -50,3 +50,49 @@
         height: 100px;
     }
 }
+/*--------------------------SOBRE----------------------*/
+.divautores {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#000, #dd601a);
+}
+/**
+ * Profile image component
+ */
+.profile-header-container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-header-img {
+    padding: 54px;
+}
+
+.profile-header-img > img.rounded-circle {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #2a2a2a;
+    box-shadow: 3px -3px  rgba(0,0,0,0.6);
+}
+
+.profile-header {
+    margin-top: 43px;
+}
+
+/**
+ * BADGE
+ */
+.rank-label-container {
+    margin-top: -19px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.label.rank-label {
+    display: block;
+    background-color: #2a2a2a;
+    padding: 5px 10px 5px 10px;
+    border-radius: 27px;
+    box-shadow: 3px -3px  rgba(0,0,0,0.6);
+    color: white;
+}
