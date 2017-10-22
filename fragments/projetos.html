@@ -5,7 +5,7 @@
 		<pager></pager>
 		<div class="row mb-2">
 			<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item mt-3" 
-				ng-repeat="projeto in vm.items | limitTo:pageSize">
+				ng-repeat="projeto in vm.items | limitTo:pageSize | orderBy:'name'">
 				<div class="card h-100">
 					<a ng-href="#!/projetos/{{ projeto._id }}">
 						<img class="card-img-top" src="http://placehold.it/500x300" alt="{{projeto.name}}">
